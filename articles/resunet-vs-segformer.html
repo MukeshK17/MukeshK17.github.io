@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ResUNet vs. SegFormer | Mukesh Dewangan</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .article{ max-width:920px; margin:0 auto; padding:72px 24px 100px; }
+  .article a.back{ font-family:var(--mono); font-size:13px; color:var(--cyan); display:inline-block; margin-bottom:28px; }
+  .article h1{ font-size:30px; font-weight:700; color:var(--text); margin-bottom:10px; letter-spacing:-0.01em; }
+  .article .meta{ font-family:var(--mono); font-size:12px; color:var(--text-faint); margin-bottom:36px; }
+  .article h2{ font-size:19px; color:var(--text); margin:36px 0 12px; font-weight:600; }
+  .article p{ color:var(--text-dim); max-width:none; margin-bottom:16px; font-size:15.5px; }
+  .article code{ font-family:var(--mono); font-size:13.5px; background:var(--panel); border:1px solid var(--border); padding:2px 6px; border-radius:3px; color:var(--amber); }
+  .article ul{ margin:0 0 16px 20px; list-style:disc; color:var(--text-dim); font-size:15.5px; }
+  .article li{ margin-bottom:8px; }
+  table{ width:100%; border-collapse:collapse; margin:20px 0; font-size:14px; }
+  th, td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--border); color:var(--text-dim); }
+  th{ color:var(--text); font-family:var(--mono); font-size:12px; font-weight:500; }
+</style>
+</head>
+<body>
+<div class="article">
+  <a class="back" href="../index.html#writing">← back to portfolio</a>
+  <h1>ResUNet vs. SegFormer: two ways to segment the same image</h1>
+  <p class="meta">notes · deep learning · model architecture</p>
+
+  <p>
+    Both ResUNet and SegFormer solve the same problem, pixel-wise class prediction, but they get there
+    from opposite starting points: one is a convolutional encoder-decoder with residual blocks, the other
+    is a transformer-based encoder paired with a lightweight all-MLP decoder. Choosing between them is
+    less about which is "better" in the abstract and more about what your data and constraints look like.
+  </p>
+
+  <h2>ResUNet: local, efficient, data-frugal</h2>
+  <p>
+    ResUNet combines the U-Net encoder-decoder structure, downsampling to capture context, then
+    upsampling with skip connections to recover spatial detail, with residual blocks that ease gradient
+    flow in deeper networks. Convolutions give it a strong inductive bias toward local spatial structure,
+    which matters a lot when training data is limited: the model doesn't have to learn from scratch that
+    nearby pixels are usually related.
+  </p>
+  <p>
+    This makes it a solid default for smaller, domain-specific datasets (satellite imagery for a single
+    region, a modest medical imaging dataset) where a transformer's lack of built-in spatial bias would
+    otherwise need to be compensated for with far more training data or heavy augmentation.
+  </p>
+
+  <h2>SegFormer: global context, less inductive bias</h2>
+  <p>
+    SegFormer replaces the convolutional encoder with a hierarchical transformer (Mix Transformer, MiT)
+    and pairs it with a decoder that's deliberately simple (a few MLP layers fusing multi-scale features)
+    instead of the heavier decoders used in earlier transformer segmentation models. The transformer's
+    self-attention gives every patch access to global context from early in the network, which helps in
+    scenes where distant context disambiguates a region (e.g. an object's identity depends on its
+    surroundings, not just local texture).
+  </p>
+  <p>
+    The trade-off is data appetite: transformers generally need larger datasets (or strong pretraining) to
+    reach their potential, since they have to learn spatial relationships that convolutions get for free.
+    SegFormer's efficient decoder design helps offset the usual transformer compute cost, which is part of
+    why it's a common practical choice rather than only a research curiosity.
+  </p>
+
+  <h2>A rough decision guide</h2>
+  <table>
+    <tr><th>Situation</th><th>Lean toward</th></tr>
+    <tr><td>Small, domain-specific dataset</td><td>ResUNet</td></tr>
+    <tr><td>Large dataset or strong pretrained backbone available</td><td>SegFormer</td></tr>
+    <tr><td>Fine local boundaries matter most (thin structures)</td><td>ResUNet</td></tr>
+    <tr><td>Long-range context matters (scene-level disambiguation)</td><td>SegFormer</td></tr>
+    <tr><td>Tight inference latency budget on limited hardware</td><td>ResUNet (usually lighter)</td></tr>
+  </table>
+
+  <p>
+    In practice, it's worth benchmarking both on a held-out split before committing. The "right" answer
+    depends more on your specific data distribution than either architecture's general reputation. On a
+    glacier-mapping dataset I've worked with (18-band Himalayan satellite imagery across five regions), a
+    ResUNet trained with a Focal + Dice + Tversky loss combination reached about 82% mean IoU, while a
+    SegFormer-B4 variant trained with Dice + BCE reached about 79%, consistent with the idea that a
+    smaller, domain-specific dataset favors the convolutional model's stronger spatial prior. The next step
+    is combining both through a lightweight ensemble, rather than treating the comparison as a final answer.
+  </p>
+</div>
+</body>
+</html>

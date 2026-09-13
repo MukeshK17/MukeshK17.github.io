@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choosing loss functions for imbalanced segmentation masks | Mukesh Dewangan</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .article{ max-width:920px; margin:0 auto; padding:72px 24px 100px; }
+  .article a.back{ font-family:var(--mono); font-size:13px; color:var(--cyan); display:inline-block; margin-bottom:28px; }
+  .article h1{ font-size:30px; font-weight:700; color:var(--text); margin-bottom:10px; letter-spacing:-0.01em; }
+  .article .meta{ font-family:var(--mono); font-size:12px; color:var(--text-faint); margin-bottom:36px; }
+  .article h2{ font-size:19px; color:var(--text); margin:36px 0 12px; font-weight:600; }
+  .article p{ color:var(--text-dim); max-width:none; margin-bottom:16px; font-size:15.5px; }
+  .article code{ font-family:var(--mono); font-size:13.5px; background:var(--panel); border:1px solid var(--border); padding:2px 6px; border-radius:3px; color:var(--amber); }
+  .article ul{ margin:0 0 16px 20px; list-style:disc; color:var(--text-dim); font-size:15.5px; }
+  .article li{ margin-bottom:8px; }
+</style>
+</head>
+<body>
+<div class="article">
+  <a class="back" href="../index.html#writing">← back to portfolio</a>
+  <h1>Choosing loss functions for imbalanced segmentation masks</h1>
+  <p class="meta">notes · deep learning · semantic segmentation</p>
+
+  <p>
+    Segmentation tasks like mapping glaciers, roads, or lesions from imagery share an awkward property:
+    the class you care about most is usually the smallest one in the image. A glacier mask might be
+    5% foreground pixels against a 95% background of rock and sky. Trained naively with pixel-wise
+    cross-entropy, a model can hit 95% accuracy by predicting background everywhere, and still be
+    completely useless.
+  </p>
+
+  <h2>Why cross-entropy alone fails here</h2>
+  <p>
+    Cross-entropy treats every pixel as an independent classification decision, weighted equally. With a
+    heavy class imbalance, gradient contributions from the minority class get drowned out early in
+    training, and the model settles into a "predict the majority class" local minimum that's very hard to
+    escape without help.
+  </p>
+
+  <h2>Dice loss: optimizing overlap directly</h2>
+  <p>
+    Dice loss instead optimizes the overlap between predicted and ground-truth masks directly, it's
+    derived from the Dice coefficient, <code>2·|A∩B| / (|A|+|B|)</code>. Because it's a ratio rather than
+    a per-pixel sum, it's naturally less sensitive to class imbalance: a model gets credit for correctly
+    identifying the small foreground region regardless of how much background surrounds it.
+  </p>
+  <p>
+    In practice, Dice loss on its own can be unstable early in training (empty or near-empty prediction
+    masks produce ill-behaved gradients), so it's common to combine it with cross-entropy as a weighted
+    sum, cross-entropy to stabilize early training, Dice to push overlap quality later on.
+  </p>
+
+  <h2>Tversky loss: tuning the precision/recall trade-off</h2>
+  <p>
+    Tversky loss generalizes Dice with two extra parameters, α and β, that separately weight false
+    positives and false negatives. For a problem like glacier mapping, where under-predicting glacier
+    extent might be a worse error than over-predicting it (or vice versa, depending on the downstream
+    use), Tversky lets you bias training toward the error you'd rather tolerate. Setting α = β = 0.5
+    recovers plain Dice loss.
+  </p>
+
+  <h2>Boundary-aware losses</h2>
+  <p>
+    Region-based losses like Dice and Tversky optimize overlap but are fairly indifferent to how clean the
+    boundary is, a mask that's shifted a few pixels inward can still score well. For tasks where the
+    boundary itself matters (a glacier's terminus position, a road's edge), boundary or contour losses
+    that penalize distance from the ground-truth boundary directly can meaningfully sharpen results,
+    usually added as a secondary term alongside a region-based loss rather than used alone.
+  </p>
+
+  <h2>A reasonable starting recipe</h2>
+  <ul>
+    <li>Start with a weighted combination: <code>loss = CE + Dice</code>, equally weighted.</li>
+    <li>If false negatives on the minority class are costly, move to Tversky with β &gt; α.</li>
+    <li>If boundary precision matters more than raw overlap, add a boundary term with a small weight (it should refine, not dominate, the loss).</li>
+    <li>Always check per-class metrics (IoU per class, not just mean IoU). A good mean can hide a bad minority class.</li>
+  </ul>
+</div>
+</body>
+</html>

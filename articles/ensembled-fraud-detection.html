@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why fusing weak signals beats one strong model | Mukesh Dewangan</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .article{ max-width:920px; margin:0 auto; padding:72px 24px 100px; }
+  .article a.back{ font-family:var(--mono); font-size:13px; color:var(--cyan); display:inline-block; margin-bottom:28px; }
+  .article h1{ font-size:30px; font-weight:700; color:var(--text); margin-bottom:10px; letter-spacing:-0.01em; }
+  .article .meta{ font-family:var(--mono); font-size:12px; color:var(--text-faint); margin-bottom:36px; }
+  .article h2{ font-size:19px; color:var(--text); margin:36px 0 12px; font-weight:600; }
+  .article p{ color:var(--text-dim); max-width:none; margin-bottom:16px; font-size:15.5px; }
+  .article code{ font-family:var(--mono); font-size:13.5px; background:var(--panel); border:1px solid var(--border); padding:2px 6px; border-radius:3px; color:var(--amber); }
+  .article ul{ margin:0 0 16px 20px; list-style:disc; color:var(--text-dim); font-size:15.5px; }
+  .article li{ margin-bottom:8px; }
+</style>
+</head>
+<body>
+<div class="article">
+  <a class="back" href="../index.html#writing">← back to portfolio</a>
+  <h1>Why fusing weak signals beats one strong model</h1>
+  <p class="meta">notes · document forensics · ensembling</p>
+
+  <p>
+    When I started building a fake PAN-card detector, the obvious approach was to train one strong
+    end-to-end classifier: feed in a document image, get out a suspicious/clean label. It seemed simpler,
+    and in a lot of ML problems it's the right instinct. For document fraud specifically, it turned out to
+    be the wrong one, and the reason is worth spelling out, because it generalizes past this one project.
+  </p>
+
+  <h2>The problem with one strong classifier</h2>
+  <p>
+    Forged documents don't fail in one consistent way. Some have OCR-corrupted or structurally invalid
+    fields, a PAN number with a wrong taxpayer-entity code, a nonsensical date. Others look
+    structurally fine but have a locally edited text region, a pasted photo, or a subtle sharpness
+    mismatch between the tampered area and its surroundings. A single classifier trained end-to-end has
+    to implicitly learn all of these failure modes from the same weight space, and in practice it tends to
+    specialize on whichever signal is most common in the training data, quietly under-weighting the rarer
+    forgery types, which are exactly the ones a real fraud team most needs caught.
+  </p>
+
+  <h2>Splitting the problem into independent checks</h2>
+  <p>
+    The alternative is to build several narrow, purpose-built detectors that each look for one failure
+    mode, and combine their outputs:
+  </p>
+  <ul>
+    <li><strong>OCR and rule validation</strong>: deterministic checks on extracted text: field structure, date validity, known-invalid patterns.</li>
+    <li><strong>Regional tamper detection</strong>: compares local sharpness and edge characteristics of a text region against its surrounding context.</li>
+    <li><strong>Visual forensics</strong>: looks for image-level artifacts: digital overlays, unusual noise patterns, error-level analysis inconsistencies.</li>
+    <li><strong>Patch-level deep learning</strong>: a classifier scoring sliding-window patches for localized visual tampering the other three might miss.</li>
+  </ul>
+  <p>
+    None of these four checks is individually as accurate as a well-tuned end-to-end model would be on its
+    best-case failure mode. But each one fails on a different subset of forgeries, and importantly,
+    each fails in a different, mostly uncorrelated way.
+  </p>
+
+  <h2>Why voting beats stacking here</h2>
+  <p>
+    Rather than feeding all four signals into a fifth model to learn how to weight them (a stacking
+    approach), a simple 2-of-4 voting scheme (flag a document as suspicious if at least two of the four
+    stages fire) turned out to be both more robust and far more interpretable. Interpretability matters a
+    lot in a fraud-review context: a reviewer can be told exactly which two checks fired and why, rather
+    than trusting an opaque combined score. Voting is also less prone to a single miscalibrated stage
+    dominating the outcome. A stacked model can learn to over-trust whichever input happens to correlate
+    best with the training labels, even if that input is the least reliable one in production.
+  </p>
+
+  <h2>When this pattern generalizes</h2>
+  <p>
+    This isn't specific to document forgery. Anywhere you have several genuinely independent sources of
+    weak evidence, and the cost of a false negative is high, an ensemble of narrow detectors with a simple,
+    auditable combination rule is often both more robust and more trustworthy than a single model
+    asked to do everything at once, even if that single model would score slightly higher on a clean
+    benchmark.
+  </p>
+</div>
+</body>
+</html>

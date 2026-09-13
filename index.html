@@ -1,304 +1,383 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mukesh Dewangan Portfolio</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="mediaqueries.css">
-    </head>
-    <body>
-        <nav id="desktop-nav">
-            <div class ="logo">Mukesh Dewangan</div>
-            <div>
-                <ul class="nav-links">
-                    <!-- <li><a href="#home">Home</a></li> -->
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-            </div>  
-        </nav>
-        <nav id ="hamburger-nav">
-            <div class="logo">Mukesh Dewangan</div>
-            <div class="hamburger-menu">
-                <div class="hamburger-icon" onclick="toggleMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <div class="menu-links">
-                    <li><a href="#about" onclick="toggleMenu()">About</a></li>
-                    <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-                    <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-                    <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-                </div>
-            </div>
-        </nav>
-        <section id="profile">
-            <div class="section__pic-container">
-                <img src="./assets/profile-pic.jpg" alt="Mukesh Dewangan profile" />
-            </div>
-            <div class="section__text">
-                <p class="section__text__p1">Hello, I'm</p>
-                <h1 class="title">Mukesh Dewangan</h1>
-                <p class="section__text__p2">Junior Undergraduate at IIT Gandhinagar</p>
-                <p class="section__text__p3">Mechanical Engineering</p>
-                <div class="btn-container">
-                    <button class = "btn btn-color-2" onclick="window.open('./assets/Mukesh_DEWANGAN.pdf')">Download CV</button>
-                    <button class = "btn btn-color-1" onclick="location.href='./#contact'">Contact Info</button>
-                </div>
-                <div id="socials-container">
-                    <img src="./assets/linkedin.png" alt="My LinkedIn Profile " class="icon" onclick="location.href='https://www.linkedin.com/in/dewanganmukesh/'" ?>
-                    <img src="./assets/github.png" alt="My github Profile " class="icon" onclick="location.href='https://github.com/MukeshK17'" ?>
-                </div>
-            </div>
-        </section>
-        <section id="about">
-            <p class="section__text__p1">Get to know more</p>
-            <h1 class="title">About Me</h1>
-            <div class="section-container">
-                <div class="section__pic-container">
-                    <img src="./assets/about-pic.jpg" alt="Profile Picture" class="about-pic" />
-                </div>
-                <div class="about-details-container">
-                    <div class="about-containers">
-                        <div class="details-container">
-                            <img src="./assets/experience.png" alt="Experience icon" class="icon" />
-                            <h3>Experience</h3>
-                              <p>
-                                Research Intern </br>
-                                <a href="https://www.iitr.ac.in/" target="_blank" style="text-decoration: none; cursor: pointer;">@IIT ROORKEE</a> </br>
-                                Invention Factory Intern </br>
-                                <a href="https://makerbhavanfoundation.org/" target="_blank" style="text-decoration: none; cursor: pointer;">@Maker Bhavan</a> </br>
-                                Senior Tech-Expo Executive </br>
-                                <a href="https://amalthea.iitgn.ac.in/" target="_blank" style="text-decoration: none; cursor: pointer;">@AMALTHEA</a>
-                              </p>
-                              
-                        </div>
-                        <div class="details-container"><img src="./assets/education.png" alt="Education icon" class="icon" />
-                            <h3>Education</h3>
-                            <p>B-Tech Mechanical Engineering</br>Machine Learning enthusiast</br>2023-2027</p>
-                        </div>
-                    </div>
-                    <div class="text-container">
-                        <p style="margin-bottom: 15px;">
-                            <!-- I am highly interested in Machine Learning, Data Analysis and its underlying concepts. Currently
-                            I am working on designing an Autonomous Underwater Vehicle (AUV) and its control system using Machine Learning
-                            combined with practical problem-solving. -->
-                            I am deeply passionate about Machine Learning, Data Analysis, and Robotics. Currently, I am working extensively with ROS, MuJoCo, and Gazebo 
-                            as part of my journey into robotics simulation, control, and system integration. Alongside this, I continue to explore computer vision 
-                            and its applications in autonomous systems.
-                          </p>
-                          <p>
-                            <!-- I enjoy exploring how Machine Learning could be applied to real-world challenges, particularly in automation,
-                            robotics, and advanced image processing. My focus is on learning the concepts well so I can build and contribute to innovative 
-                            projects. -->
-                            I enjoy exploring how machine learning can be applied to automation, robotics, and geospatial analysis, with a particular focus on
-                            deep learning architectures like ResUNet and SegFormer, and their optimization using specialized loss functions. My approach combines
-                            strong conceptual understanding with hands-on implementation, aiming to deliver solutions that are both innovative and practically impactful.
-                          </p>
-                          
-                    </div>
-                </div>
-            </div>
-            <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#experience'" />
-        </section>
-        <section id="experience">
-            <p class = "section__text__p1">Explore my</p>
-            <h1 class = "title">Experience</h1>
-            <div class="experience-details-container">
-                <div class="about-containers">
-                    <div class="details-container">
-                        <h2 class="experience-sub-title">Machine Learning </h2>
-                        <div class="article-container">
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                                <div>
-                                    <h3>PyTorch</h3>
-                                    <p>Experienced</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                                <div>
-                                    <h3>Tensorflow</h3>
-                                    <p>Intermediate</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                                <div>
-                                    <h3>Scikit-Learn</h3>
-                                    <p>Experienced</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                                <div>
-                                    <h3>OpenCV</h3>
-                                    <p>Intermediate</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                                <div>
-                                    <h3>NumPy</h3>
-                                    <p>Experienced</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                                <div>
-                                    <h3>Pandas</h3>
-                                    <p>Experienced</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                                <div>
-                                    <h3>Matplotlib</h3>
-                                    <p>Experienced</p>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                    <div class="details-container">
-                        <h2 class="experience-sub-title">Languages/Tools</h2>
-                        <div class="article-container">
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                                <div>
-                                    <h3>Python</h3>
-                                    <p>Experienced</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                                <div>
-                                    <h3>Latex</h3>
-                                    <p>Intermediate</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                                <div>
-                                    <h3>GIT</h3>
-                                    <p>Intermediate</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                                <div>
-                                    <h3>Streamlit</h3>
-                                    <p>Intermediate</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                                <div>
-                                    <h3>Arduino</h3>
-                                    <p>Experienced</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                                <div>
-                                    <h3>HTML</h3>
-                                    <p>Intermediate</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                                <div>
-                                    <h3>Adobe Illustrator</h3>
-                                    <p>Experienced</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                                <div>
-                                    <h3>Premiere Pro</h3>
-                                    <p>Experienced</p>
-                                </div>
-                            </article>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#projects'" />
-        </section>
-        <section id="projects">
-            <p class="section__text__p1">
-                Browse my recent
-            </p>
-            <h1 class="title">Projects</h1>
-            <div class="experience-details-container">
-                <div class="about-containers">
-                <div class="details-container color container">
-                    <div class="article-container">
-                        <img src="./assets/project2.png" alt="Project 1" class="project-img" />
-                    </div>
-                    <h2 class="experience-sub-title">Glacier Mapping Using DL </h2>
-                    <div class="btn-container">
-                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/MukeshK17/Glacier-Mapping'">Github</button>
-                        <!-- <button class="btn btn-color-2 project-btn" onclick="location.href='https://nextcharpred.streamlit.app/'">Live demo</button> -->
-                    </div>
-                </div>
-                <div class="details-container color container">
-                    <div class="article-container">
-                        <img src="./assets/project1.png" alt="Project 2" class="project-img" />
-                    </div>
-                    <h2 class="experience-sub-title">Next k Characters Generator</h2>
-                    <div class="btn-container">
-                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/MukeshK17/next_char'">Github</button>
-                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://nextcharpred.streamlit.app/'">Live demo</button>
-                    </div>
-                </div>
-                <div class="details-container color container">
-                    <div class="article-container">
-                        <img src="./assets/project3.png" alt="Project 3" class="project-img" />
-                    </div>
-                    <h2 class="experience-sub-title">Mechanics of Solids Visualization Tool</h2>
-                    <div class="btn-container">
-                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/MukeshK17/MOS-yield-prediction-'">Github</button>
-                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://mosprojectgroup7.streamlit.app/'">Live demo</button>
-                    </div>
-                </div>
-            </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>~/mukeshk17</title>
+  <meta name="description" content="Mukesh Dewangan, Mechanical Engineering undergrad at IIT Gandhinagar, building deep learning systems for document forensics and geospatial analysis.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+  <nav class="topnav">
+    <div class="topnav__inner">
+      <div class="topnav__logo"><span class="path">~/</span>mukeshk17</div>
+      <div class="topnav__links" id="nav-links">
+        <a href="#about">about</a>
+        <a href="#experience">experience</a>
+        <a href="#projects">projects</a>
+        <a href="#opensource">open source</a>
+        <a href="#writing">writing</a>
+        <a href="#contact">contact</a>
+        <a href="https://drive.google.com/file/d/1I2N_7szDTJc5YRZZ6JBHBK3S7UJk-XeA/view?usp=sharing" target="_blank" rel="noopener" class="resume-link">résumé</a>
+      </div>
+      <div class="topnav__status">
+        <span class="dot"></span> open to full time roles &amp; research
+      </div>
+      <div class="hamburger" id="hamburger" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#about">about</a>
+      <a href="#experience">experience</a>
+      <a href="#projects">projects</a>
+      <a href="#opensource">open source</a>
+      <a href="#writing">writing</a>
+      <a href="#contact">contact</a>
+      <a href="./assets/Mukesh_Dewangan_resume.pdf" target="_blank" rel="noopener">résumé</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <p class="eyebrow">about</p>
+        <h2 class="head">What I'm working on</h2>
+        <div class="about__grid">
+          <div class="about__pic">
+            <img src="./assets/about-pic.jpg" alt="Mukesh Dewangan">
+          </div>
+          <div class="about__body">
+            <p class="about__greeting">Hi, I'm Mukesh Dewangan.</p>
+            <p>
+              I'm a Bachelor's student at IIT Gandhinagar, working on machine learning and computer vision. My work spans document intelligence, visual forensics,
+               and computer vision systems built for real-world, imperfect data - not clean benchmarks.
+            </p>
+            <p>I’m interested in two main questions:</p>
+
+              <ul>
+                <li>
+                  <strong>How do we build models that survive real, messy data?</strong>
+                </li>
+                <li>
+                  <strong>How do we combine a few imperfect signals into a decision we'd actually trust?</strong>
+                </li>
+              </ul>
+          </div>
+        </div>
+        <div class="focus-tags">
+          <span>Deep Learning</span>
+          <span>Computer Vision</span>
+          <span>Document Forensics</span>
+          <span>Remote Sensing</span>
+          <span>Semantic Segmentation</span>
+          <span>MLOps</span>
+        </div>
+      </div>
+    </section>
+
+        <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="container">
+        <p class="eyebrow">experience</p>
+        <h2 class="head">Where I've worked</h2>
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="row">
+              <div class="role">Machine Learning Intern</div>
+              <div class="when">May to Jul 2026</div>
             </div>
-            <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#contact'" />
-        </section>
-        <section id="contact">
-            <p class="section__text__p1">Get in touch</p>
-            <h1 class="title">Contact Me</h1>
-            <div class="contact-info-upper-container">
-                <div class="contact-info-container">
-                    <img src="./assets/email.png" alt="LinkedIn icon" class="icon" />
-                    <p><a href="mailto:23110211@iitgn.ac.in">mukesh.dewangan@iitgn.ac.in</a></p>
-                </div>
-                <div class="contact-info-container">
-                    <img src="./assets/linkedin.png" alt="Email icon" class="icon" />
-                    <p><a href="https://www.linkedin.com/in/dewanganmukesh/">LinkedIn</a></p>
-                </div>
+            <div class="org">Bank of Baroda, Mumbai</div>
+            <p>
+              Built a fraud detection system for PAN cards by testing seven different
+              approaches - from OCR rule checks to vision transformers to anomaly
+              detection - and combining the four that actually worked into one pipeline,
+              shipped with a dashboard for bank staff to use directly.
+            </p>
+            <p>
+              The more useful result was figuring out <strong><em>why</em></strong> the rest didn't work:
+              found a silent bug that had frozen a model's training for weeks, and proved
+              that the hardest forgery type - a single digit swapped in a re-saved JPEG -
+              is undetectable by any image-based method, full stop. That's the kind of
+              finding that saves the next person months.
+            </p>
+          </div>
+
+          <div class="tl-item">
+            <div class="row">
+              <div class="role">Machine Learning Research Intern</div>
+              <div class="when">May to Aug 2025</div>
             </div>
-        </section>
-        <footer>
-            <nav>
-                <div class="nav-links-container">
-                    <ul class="nav-links">
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#experience">Experience</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-            </nav>
-            <p>Copyright &#169; 2025 Mukesh Dewangan All Rights Reserverd</p>
-        </footer>
-        <script src = "script.js"></script>
-    </body>
-</html> 
+            <div class="org"><a href="https://www.iitr.ac.in/" target="_blank" rel="noopener">IIT Roorkee</a></div>
+            <p>
+              Mapped Himalayan glaciers from 18-band satellite imagery - most of which
+              isn't even visible light - and got to 82.4% mean IoU by combining two
+              architectures that make different mistakes instead of betting on one.
+            </p>
+            <p>
+              Glaciers are a small, thin sliver of every image, so a model that just
+              optimizes for overall accuracy learns to ignore them entirely. Testing
+              three different loss functions to fix that, and running a sensitivity
+              analysis to find out which of the 18 bands the model was actually using,
+              mattered more than the architecture choice itself.
+            </p>
+          </div>
+
+          <div class="tl-item">
+            <div class="row">
+              <div class="role">Invention Factory Intern</div>
+              <div class="when">June to July 2024</div>
+            </div>
+            <div class="org"><a href="https://makerbhavanfoundation.org/" target="_blank" rel="noopener">Maker Bhavan Foundation</a></div>
+            <p>
+              Researched biodegradable materials for sanitary pads and designed a
+              disposal mechanism with no leakage of soiled waste - aimed at cutting the
+              infection risk that comes from improper disposal, in a six-week invention
+              sprint.
+            </p>
+          </div>
+
+          <div class="tl-item">
+            <div class="row">
+              <div class="role">Senior Tech Expo Executive</div>
+              <div class="when"></div>
+            </div>
+            <div class="org"><a href="https://amalthea.iitgn.ac.in/" target="_blank" rel="noopener">AMALTHEA, IIT Gandhinagar</a></div>
+            <p>
+              Led corporate outreach for IIT Gandhinagar's technical summit, after
+              starting on the design team.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container">
+        <p class="eyebrow">projects</p>
+        <h2 class="head">Things I've built</h2>
+        <div class="proj-grid">
+
+          <div class="proj">
+            <span class="proj__idx">01</span>
+            <div class="proj__title">Glacier Mapping, Himalayan Satellite Imagery</div>
+            <p>
+              Segmented glaciers across five Himalayan regions from 18-band satellite
+              data — elevation, thermal, and SWIR bands, not just color. A ResUNet
+              trained with a Focal+Dice+Tversky loss combination reached 82% mean
+              IoU on this class-imbalanced problem, where glaciers are a tiny sliver
+              of each image. Currently ensembling it with a SegFormer model to push
+              performance further.
+            </p>
+            <div class="proj__stack"><span>ResUNet</span><span>SegFormer</span><span>Remote Sensing</span></div>
+            <div class="proj__links">
+              <a href="https://github.com/MukeshK17/Glacier-Mapping" target="_blank" rel="noopener">Github →</a>
+            </div>
+          </div>
+
+          <div class="proj">
+            <span class="proj__idx">02</span>
+            <div class="proj__title">PAN Card Forgery Detection Pipeline</div>
+            <p>
+              A four-stage document forensics system for a banking risk setting —
+              OCR validation, tamper detection, visual forensics, and a trained
+              classifier, combined through majority voting. Tested seven different
+              detection approaches and found that single-character forgeries are
+              undetectable from pixels alone once a document is re-compressed — a
+              real limit, not a modeling gap.
+            </p>
+            <div class="proj__stack"><span>PaddleOCR</span><span>EfficientNet B0</span><span>PyTorch</span></div>
+            <div class="proj__links">
+              <a href="https://github.com/MukeshK17/document-forensics" target="_blank" rel="noopener">Github →</a>
+            </div>
+          </div>
+
+          <div class="proj">
+            <span class="proj__idx">03</span>
+            <div class="proj__title">Human Activity Recognition</div>
+            <p>
+              Team project for a machine learning course — classified human
+              activities from accelerometer data using PCA for visualization and
+              TSFEL for automated feature extraction, then compared decision trees
+              against few-shot LLM prompting on the same task.
+            </p>
+            <div class="proj__stack"><span>Python</span><span>PCA</span><span>TSFEL</span></div>
+            <div class="proj__links">
+              <a href="https://github.com/MukeshK17/es335-24-fall-assignment-1" target="_blank" rel="noopener">Github →</a>
+            </div>
+          </div>
+
+          <div class="proj">
+            <span class="proj__idx">04</span>
+            <div class="proj__title">Next-k Character Generator</div>
+            <p>
+              An MLP-based character-level model that predicts the next k
+              characters from a text prompt, wrapped in a Streamlit app with live
+              controls for context length, embedding size, and architecture —
+              trained on classics like Three Men in a Boat and Malgudi Days.
+            </p>
+            <div class="proj__stack"><span>PyTorch</span><span>Streamlit</span></div>
+            <div class="proj__links">
+              <a href="https://github.com/MukeshK17/next_char" target="_blank" rel="noopener">Github →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- OPEN SOURCE -->
+    <section id="opensource">
+      <div class="container">
+        <p class="eyebrow">open source</p>
+        <h2 class="head">Contributions to other projects</h2>
+        <div class="oss-list">
+
+          <div class="oss-item">
+            <span class="badge">merged</span>
+            <div class="body">
+              <b>Conduit, FastAPI LLM routing system</b>
+              <p>Made the whole system harder to break silently — added a Prometheus metrics endpoint (request counts, latency percentiles, per-model usage), standardized error codes across the API, made core data models immutable to prevent accidental state bugs, and added rate-limit headers, deprecation warnings, and API docs.</p>
+            </div>
+            <a class="repo" href="https://github.com/ashita-ai/conduit/pull/235" target="_blank" rel="noopener">PR #235 →</a>
+          </div>
+
+          <div class="oss-item">
+            <span class="badge">merged</span>
+            <div class="body">
+              <b>marimo</b>
+              <p>Tracked down a NumPy comparison bug that was silently breaking cached computation state in embedded apps — the kind of bug that doesn't crash, it just quietly gives wrong results. Fixed it with a proper equality check and added regression tests so it can't come back.</p>
+            </div>
+            <a class="repo" href="https://github.com/marimo-team/marimo/pull/7980" target="_blank" rel="noopener">PR #7980 →</a>
+          </div>
+
+          <div class="oss-item">
+            <span class="badge">merged</span>
+            <div class="body">
+              <b>EDS-NLP</b>
+              <p>Fixed a TensorBoard crash that happened whenever a non-scalar hyperparameter got logged during training — a small bug, but one that could kill a long training run over logging, not modeling.</p>
+            </div>
+            <a class="repo" href="https://github.com/aphp/edsnlp/pull/476" target="_blank" rel="noopener">PR #476 →</a>
+          </div>
+
+          <div class="oss-item">
+            <span class="badge">merged</span>
+            <div class="body">
+              <b>LitGPT</b>
+              <p>Added CLI support for stopping a pretraining run early at a fixed step, so people benchmarking LLM pretraining don't have to babysit a full run just to profile it.</p>
+            </div>
+            <a class="repo" href="https://github.com/Lightning-AI/litgpt/pull/2193" target="_blank" rel="noopener">PR #2193 →</a>
+          </div>
+
+          <div class="oss-item">
+            <span class="badge">merged</span>
+            <div class="body">
+              <b>ZenML</b>
+              <p>Fixed a CLI bug where list commands returned oldest-first results instead of newest — a small thing, but the kind of inconsistency that erodes trust in a tool fast.</p>
+            </div>
+            <a class="repo" href="https://github.com/zenml-io/zenml/pull/4459" target="_blank" rel="noopener">PR #4459 →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- WRITING -->
+    <section id="writing">
+      <div class="container">
+        <p class="eyebrow">writing</p>
+        <h2 class="head">Notes &amp; write ups</h2>
+        <p class="lede">Short technical notes on methods I actually use, mostly written for my own clarity and shared in case they help someone else too.</p>
+        <div class="writing-grid">
+          <a class="article-card" href="articles/loss-functions-segmentation.html">
+            <div class="date">Article</div>
+            <h3>Choosing loss functions for imbalanced segmentation masks</h3>
+            <p>Why plain cross entropy struggles on thin, rare classes like glacier boundaries, and how Dice, Tversky, and boundary losses each fix a different part of the problem.</p>
+          </a>
+          <a class="article-card" href="articles/resunet-vs-segformer.html">
+            <div class="date">Article</div>
+            <h3>ResUNet vs SegFormer, two ways to segment the same image</h3>
+            <p>A practical comparison of a convolutional encoder decoder against a transformer based segmentation head, using results from my own glacier mapping runs.</p>
+          </a>
+          <a class="article-card" href="articles/ensembled-fraud-detection.html">
+            <div class="date">Article</div>
+            <h3>Why fusing weak signals beats one strong model</h3>
+            <p>Notes from building a document fraud pipeline. What a two of four voting scheme gets right that a single end to end classifier does not.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="container">
+        <p class="eyebrow">skills</p>
+        <h2 class="head">Tools I use</h2>
+        <div class="skill-groups">
+          <div class="skill-group">
+            <h3>Computer Vision &amp; Deep Learning</h3>
+            <div class="skill-row">PyTorch</div>
+            <div class="skill-row">TensorFlow</div>
+            <div class="skill-row">Hugging Face Transformers</div>
+            <div class="skill-row">OpenCV, DINOv2</div>
+          </div>
+          <div class="skill-group">
+            <h3>Data &amp; Scientific Computing</h3>
+            <div class="skill-row">NumPy, Pandas</div>
+            <div class="skill-row">Rasterio, PyMuPDF</div>
+            <div class="skill-row">Scikit-learn</div>
+          </div>
+          <div class="skill-group">
+            <h3>MLOps &amp; Infrastructure</h3>
+            <div class="skill-row">Docker, GitHub Actions</div>
+            <div class="skill-row">Prometheus, FastAPI</div>
+            <div class="skill-row">AWS EC2, Linux</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <p class="eyebrow">contact</p>
+        <h2 class="head">Let's talk</h2>
+        <div class="contact-grid">
+          <p>Open to full time roles and research collaborations in machine learning, computer vision, and document intelligence. Reach out through any of these.</p>
+          <div class="contact-box">
+            <div class="contact-row">
+              <span class="k">email</span>
+              <a class="v" href="mailto:mukesh.dewangan@iitgn.ac.in">mukesh.dewangan@iitgn.ac.in</a>
+            </div>
+            <div class="contact-row">
+              <span class="k">linkedin</span>
+              <a class="v" href="https://www.linkedin.com/in/dewanganmukesh/" target="_blank" rel="noopener">/in/dewanganmukesh</a>
+            </div>
+            <div class="contact-row">
+              <span class="k">github</span>
+              <a class="v" href="https://github.com/MukeshK17" target="_blank" rel="noopener">/MukeshK17</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <span>© 2026 Mukesh Dewangan</span>
+        <span>~/mukeshk17</span>
+      </div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
