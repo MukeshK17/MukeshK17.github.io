@@ -4,37 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>~/mukeshk17</title>
-  <meta name="description" content="Mukesh Dewangan, Mechanical Engineering undergrad at IIT Gandhinagar, building deep learning systems for document forensics and geospatial analysis.">
+  <meta name="description" content="Mukesh Dewangan, undergrad at IIT Gandhinagar working on machine learning and computer vision: document forensics, satellite image segmentation and open-source ML tooling.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
   <nav class="topnav">
     <div class="topnav__inner">
-      <div class="topnav__logo"><span class="path">~/</span>mukeshk17</div>
+      <a class="topnav__logo" href="#about"><span class="path">~/</span>mukeshk17</a>
       <div class="topnav__links" id="nav-links">
         <a href="#about">about</a>
         <a href="#experience">experience</a>
-        <a href="#projects">projects</a>
         <a href="#opensource">open source</a>
+        <a href="#projects">projects</a>
         <a href="#writing">writing</a>
         <a href="#contact">contact</a>
-        <a href="https://drive.google.com/file/d/1I2N_7szDTJc5YRZZ6JBHBK3S7UJk-XeA/view?usp=sharing" target="_blank" rel="noopener" class="resume-link">résumé</a>
+        <a href="./assets/Mukesh_Dewangan.pdf" target="_blank" rel="noopener" class="resume-link">résumé</a>
       </div>
-      <div class="topnav__status">
-        <span class="dot"></span> open to full time roles &amp; research
-      </div>
-      <div class="hamburger" id="hamburger" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
+      <div class="topnav__status"><span class="dot"></span> open to full time roles &amp; research</div>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
-      </div>
+      </button>
     </div>
     <div class="mobile-menu" id="mobile-menu">
       <a href="#about">about</a>
       <a href="#experience">experience</a>
-      <a href="#projects">projects</a>
       <a href="#opensource">open source</a>
+      <a href="#projects">projects</a>
       <a href="#writing">writing</a>
       <a href="#contact">contact</a>
       <a href="./assets/Mukesh_Dewangan_resume.pdf" target="_blank" rel="noopener">résumé</a>
@@ -42,6 +41,7 @@
   </nav>
 
   <main>
+
     <!-- ABOUT -->
     <section id="about">
       <div class="container">
@@ -54,33 +54,32 @@
           <div class="about__body">
             <p class="about__greeting">Hi, I'm Mukesh Dewangan.</p>
             <p>
-              I'm a Bachelor's student at IIT Gandhinagar, working on machine learning and computer vision. My work spans document intelligence, visual forensics,
-               and computer vision systems built for real-world, imperfect data - not clean benchmarks.
+              I'm a Bachelor's student at IIT Gandhinagar, working on machine learning and computer vision.
+              My work spans document intelligence, visual forensics, and computer vision systems built for
+              real-world, imperfect data, not clean benchmarks.
             </p>
-            <p>I’m interested in two main questions:</p>
-
-              <ul>
-                <li>
-                  <strong>How do we build models that survive real, messy data?</strong>
-                </li>
-                <li>
-                  <strong>How do we combine a few imperfect signals into a decision we'd actually trust?</strong>
-                </li>
-              </ul>
+            <p>Two questions keep pulling me back:</p>
+            <ul>
+              <li><strong>How do we build models that survive real, messy data?</strong></li>
+              <li><strong>How do we combine a few imperfect signals into a decision we'd actually trust?</strong></li>
+            </ul>
+            <p class="about__now">
+              Right now I'm building a benchmark for AI agents that fix real GitHub issues.
+              <a href="#repo-issue-agent">See the project →</a>
+            </p>
           </div>
         </div>
         <div class="focus-tags">
-          <span>Deep Learning</span>
           <span>Computer Vision</span>
           <span>Document Forensics</span>
           <span>Remote Sensing</span>
           <span>Semantic Segmentation</span>
-          <span>MLOps</span>
+          <span>Open Source ML</span>
         </div>
       </div>
     </section>
 
-        <!-- EXPERIENCE -->
+    <!-- EXPERIENCE -->
     <section id="experience">
       <div class="container">
         <p class="eyebrow">experience</p>
@@ -92,19 +91,20 @@
               <div class="role">Machine Learning Intern</div>
               <div class="when">May to Jul 2026</div>
             </div>
-            <div class="org">Bank of Baroda, Mumbai</div>
+            <div class="org">Bank of Baroda, Mumbai &middot; Risk Management Department</div>
             <p>
-              Built a fraud detection system for PAN cards by testing seven different
-              approaches - from OCR rule checks to vision transformers to anomaly
-              detection - and combining the four that actually worked into one pipeline,
-              shipped with a dashboard for bank staff to use directly.
+              Built a PAN card forgery detection pipeline for KYC onboarding: OCR rule checks, tamper
+              detection, visual forensics and a trained patch classifier, combined by majority vote.
+              Tested on 1,284 genuine and 213 forged cards (F1 0.378, patch classifier AUC 0.732).
+              The numbers are modest because the forged set was small and hand made, and the report says so.
             </p>
             <p>
-              The more useful result was figuring out <strong><em>why</em></strong> the rest didn't work:
-              found a silent bug that had frozen a model's training for weeks, and proved
-              that the hardest forgery type - a single digit swapped in a re-saved JPEG -
-              is undetectable by any image-based method, full stop. That's the kind of
-              finding that saves the next person months.
+              Tried several other approaches (error level analysis, DINOv2, LayoutLMv3, PatchCore) that did
+              not work, and wrote up why. Concluded that format-valid single-character edits are likely
+              undetectable from pixels alone. Stress tested a vision-language model (Qwen2-VL-7B), found
+              real signal in only 7 of 340 cases, and kept the simpler design. Also added score calibration
+              and CI/CD, and built an air-gapped document pipeline with a regex and Levenshtein engine for
+              fraud keywords and PDF/CSV audit exports.
             </p>
           </div>
 
@@ -115,30 +115,26 @@
             </div>
             <div class="org"><a href="https://www.iitr.ac.in/" target="_blank" rel="noopener">IIT Roorkee</a></div>
             <p>
-              Mapped Himalayan glaciers from 18-band satellite imagery - most of which
-              isn't even visible light - and got to 82.4% mean IoU by combining two
-              architectures that make different mistakes instead of betting on one.
+              Segmented Himalayan glaciers from 18-band satellite imagery across five regions. A ResUNet
+              reached about 82% mean IoU and a SegFormer B4 about 79%; ensembling the two is in progress.
             </p>
             <p>
-              Glaciers are a small, thin sliver of every image, so a model that just
-              optimizes for overall accuracy learns to ignore them entirely. Testing
-              three different loss functions to fix that, and running a sensitivity
-              analysis to find out which of the 18 bands the model was actually using,
-              mattered more than the architecture choice itself.
+              Glaciers are a small part of each image, so I compared loss function combinations for the
+              class imbalance, and used gradient-based analysis to see which bands (thermal, elevation,
+              SWIR) the model relied on.
             </p>
           </div>
 
           <div class="tl-item">
             <div class="row">
               <div class="role">Invention Factory Intern</div>
-              <div class="when">June to July 2024</div>
+              <div class="when"></div>
             </div>
             <div class="org"><a href="https://makerbhavanfoundation.org/" target="_blank" rel="noopener">Maker Bhavan Foundation</a></div>
             <p>
-              Researched biodegradable materials for sanitary pads and designed a
-              disposal mechanism with no leakage of soiled waste - aimed at cutting the
-              infection risk that comes from improper disposal, in a six-week invention
-              sprint.
+              Researched biodegradable materials for sanitary pads and worked on a disposal mechanism with
+              no leakage of soiled waste, aimed at reducing infection risk from improper disposal, in a
+              six week invention program.
             </p>
           </div>
 
@@ -149,9 +145,65 @@
             </div>
             <div class="org"><a href="https://amalthea.iitgn.ac.in/" target="_blank" rel="noopener">AMALTHEA, IIT Gandhinagar</a></div>
             <p>
-              Led corporate outreach for IIT Gandhinagar's technical summit, after
-              starting on the design team.
+              Led corporate outreach and industry engagement for the festival's technical summit, after
+              serving as Design Junior Executive.
             </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- OPEN SOURCE (replaced by live GitHub data when it loads; this is the fallback) -->
+    <section id="opensource">
+      <div class="container">
+        <p class="eyebrow">open source</p>
+        <h2 class="head">Contributions to other projects</h2>
+        <div class="oss-list">
+
+          <div class="oss-item">
+            <span class="badge">merged</span>
+            <div class="body">
+              <b>Conduit, FastAPI LLM routing system</b>
+              <p>Added a Prometheus metrics endpoint for request count, latency percentiles and per model usage, and typed error codes with structured API error responses.</p>
+            </div>
+            <a class="repo" href="https://github.com/ashita-ai/conduit/pull/235" target="_blank" rel="noopener">PR #235 →</a>
+          </div>
+
+          <div class="oss-item">
+            <span class="badge">merged</span>
+            <div class="body">
+              <b>marimo</b>
+              <p>Fixed a NumPy array comparison bug that broke cached computation state in embedded apps, and added regression tests for cache invalidation and reuse.</p>
+            </div>
+            <a class="repo" href="https://github.com/marimo-team/marimo/pull/7980" target="_blank" rel="noopener">PR #7980 →</a>
+          </div>
+
+          <div class="oss-item">
+            <span class="badge">merged</span>
+            <div class="body">
+              <b>EDS-NLP</b>
+              <p>Fixed a TensorBoard training crash caused by logging non-scalar hyperparameters.</p>
+            </div>
+            <a class="repo" href="https://github.com/aphp/edsnlp/pull/476" target="_blank" rel="noopener">PR #476 →</a>
+          </div>
+
+          <div class="oss-item">
+            <span class="badge">merged</span>
+            <div class="body">
+              <b>LitGPT</b>
+              <p>Added CLI profiling for pretraining runs, so a run can stop early at a fixed step count for benchmarking.</p>
+            </div>
+            <a class="repo" href="https://github.com/Lightning-AI/litgpt/pull/2193" target="_blank" rel="noopener">PR #2193 →</a>
+          </div>
+
+          <div class="oss-item">
+            <span class="badge">merged</span>
+            <div class="body">
+              <b>ZenML</b>
+              <p>Fixed a CLI default sorting bug where list commands returned oldest first instead of newest.</p>
+            </div>
+            <a class="repo" href="https://github.com/zenml-io/zenml/pull/4459" target="_blank" rel="noopener">PR #4459 →</a>
           </div>
 
         </div>
@@ -165,16 +217,31 @@
         <h2 class="head">Things I've built</h2>
         <div class="proj-grid">
 
+          <div class="proj proj--active" id="repo-issue-agent">
+            <span class="proj__idx">01 <span class="tag">in progress</span></span>
+            <div class="proj__title">repo-issue-agent</div>
+            <p>
+              A benchmark, and then an agent, for fixing real GitHub issues in Python repositories. So far:
+              66 verified tasks from marimo, each with a test that fails before the fix and passes after,
+              split into a frozen 20-task dev set and a separate 46-task held-out test set so results can't
+              be tuned on the test data. BM25 and code-aware retrieval are in place, with 44 offline tests
+              and CI. Next: retrieval baselines, a sandboxed tool server (MCP) and the agent loop. No agent
+              results yet.
+            </p>
+            <div class="proj__stack"><span>Python</span><span>BM25</span><span>MCP</span><span>LangGraph</span></div>
+            <div class="proj__links">
+              <!-- TODO: replace with the repo-issue-agent repo URL -->
+              <a href="https://github.com/MukeshK17" target="_blank" rel="noopener">Github →</a>
+            </div>
+          </div>
+
           <div class="proj">
-            <span class="proj__idx">01</span>
+            <span class="proj__idx">02</span>
             <div class="proj__title">Glacier Mapping, Himalayan Satellite Imagery</div>
             <p>
-              Segmented glaciers across five Himalayan regions from 18-band satellite
-              data — elevation, thermal, and SWIR bands, not just color. A ResUNet
-              trained with a Focal+Dice+Tversky loss combination reached 82% mean
-              IoU on this class-imbalanced problem, where glaciers are a tiny sliver
-              of each image. Currently ensembling it with a SegFormer model to push
-              performance further.
+              Semantic segmentation of glaciers across five Himalayan regions from 18-band satellite
+              rasters (elevation, slope, thermal, SWIR and more). ResUNet with a Focal, Dice and Tversky
+              loss reached about 82% mean IoU; SegFormer B4 reached about 79%. Ensembling them is in progress.
             </p>
             <div class="proj__stack"><span>ResUNet</span><span>SegFormer</span><span>Remote Sensing</span></div>
             <div class="proj__links">
@@ -183,30 +250,39 @@
           </div>
 
           <div class="proj">
-            <span class="proj__idx">02</span>
+            <span class="proj__idx">03</span>
             <div class="proj__title">PAN Card Forgery Detection Pipeline</div>
             <p>
-              A four-stage document forensics system for a banking risk setting —
-              OCR validation, tamper detection, visual forensics, and a trained
-              classifier, combined through majority voting. Tested seven different
-              detection approaches and found that single-character forgeries are
-              undetectable from pixels alone once a document is re-compressed — a
-              real limit, not a modeling gap.
+              A four stage document forensics system for a banking risk setting: OCR rules, collar sharpness
+              tamper detection, visual forensics and an EfficientNet-B0 patch classifier, fused by 2-of-4
+              voting. F1 0.378 on 1,284 genuine and 213 forged cards. The report documents the approaches
+              that failed and why, and where image-only detection runs out.
             </p>
-            <div class="proj__stack"><span>PaddleOCR</span><span>EfficientNet B0</span><span>PyTorch</span></div>
+            <div class="proj__stack"><span>PaddleOCR</span><span>EfficientNet B0</span><span>PyTorch</span><span>FastAPI</span></div>
             <div class="proj__links">
               <a href="https://github.com/MukeshK17/document-forensics" target="_blank" rel="noopener">Github →</a>
             </div>
           </div>
 
           <div class="proj">
-            <span class="proj__idx">03</span>
+            <span class="proj__idx">04</span>
+            <div class="proj__title">UV Unwrapping Tool</div>
+            <p>
+              UV unwrapping implemented from scratch, with a C++ core, Python bindings and a Blender add-on.
+            </p>
+            <div class="proj__stack"><span>C++</span><span>Python</span><span>Blender</span></div>
+            <div class="proj__links">
+              <a href="https://github.com/MukeshK17/uv-unwrapping" target="_blank" rel="noopener">Github →</a>
+            </div>
+          </div>
+
+          <div class="proj">
+            <span class="proj__idx">05</span>
             <div class="proj__title">Human Activity Recognition</div>
             <p>
-              Team project for a machine learning course — classified human
-              activities from accelerometer data using PCA for visualization and
-              TSFEL for automated feature extraction, then compared decision trees
-              against few-shot LLM prompting on the same task.
+              Team assignment for a machine learning course at IIT Gandhinagar. Classified activities from
+              the UCI HAR accelerometer data using PCA and TSFEL features, and compared decision trees with
+              few-shot LLM prompting.
             </p>
             <div class="proj__stack"><span>Python</span><span>PCA</span><span>TSFEL</span></div>
             <div class="proj__links">
@@ -215,16 +291,15 @@
           </div>
 
           <div class="proj">
-            <span class="proj__idx">04</span>
+            <span class="proj__idx">06</span>
             <div class="proj__title">Next-k Character Generator</div>
             <p>
-              An MLP-based character-level model that predicts the next k
-              characters from a text prompt, wrapped in a Streamlit app with live
-              controls for context length, embedding size, and architecture —
-              trained on classics like Three Men in a Boat and Malgudi Days.
+              An MLP that predicts the next k characters of a text prompt, trained on a few classic books,
+              with a Streamlit app to change context length, embedding size, architecture and seed.
             </p>
             <div class="proj__stack"><span>PyTorch</span><span>Streamlit</span></div>
             <div class="proj__links">
+              <a href="https://nextcharpred.streamlit.app/" target="_blank" rel="noopener">Live demo →</a>
               <a href="https://github.com/MukeshK17/next_char" target="_blank" rel="noopener">Github →</a>
             </div>
           </div>
@@ -233,86 +308,14 @@
       </div>
     </section>
 
-
-    <!-- OPEN SOURCE -->
-    <section id="opensource">
-      <div class="container">
-        <p class="eyebrow">open source</p>
-        <h2 class="head">Contributions to other projects</h2>
-        <div class="oss-list">
-
-          <div class="oss-item">
-            <span class="badge">merged</span>
-            <div class="body">
-              <b>Conduit, FastAPI LLM routing system</b>
-              <p>Made the whole system harder to break silently — added a Prometheus metrics endpoint (request counts, latency percentiles, per-model usage), standardized error codes across the API, made core data models immutable to prevent accidental state bugs, and added rate-limit headers, deprecation warnings, and API docs.</p>
-            </div>
-            <a class="repo" href="https://github.com/ashita-ai/conduit/pull/235" target="_blank" rel="noopener">PR #235 →</a>
-          </div>
-
-          <div class="oss-item">
-            <span class="badge">merged</span>
-            <div class="body">
-              <b>marimo</b>
-              <p>Tracked down a NumPy comparison bug that was silently breaking cached computation state in embedded apps — the kind of bug that doesn't crash, it just quietly gives wrong results. Fixed it with a proper equality check and added regression tests so it can't come back.</p>
-            </div>
-            <a class="repo" href="https://github.com/marimo-team/marimo/pull/7980" target="_blank" rel="noopener">PR #7980 →</a>
-          </div>
-
-          <div class="oss-item">
-            <span class="badge">merged</span>
-            <div class="body">
-              <b>EDS-NLP</b>
-              <p>Fixed a TensorBoard crash that happened whenever a non-scalar hyperparameter got logged during training — a small bug, but one that could kill a long training run over logging, not modeling.</p>
-            </div>
-            <a class="repo" href="https://github.com/aphp/edsnlp/pull/476" target="_blank" rel="noopener">PR #476 →</a>
-          </div>
-
-          <div class="oss-item">
-            <span class="badge">merged</span>
-            <div class="body">
-              <b>LitGPT</b>
-              <p>Added CLI support for stopping a pretraining run early at a fixed step, so people benchmarking LLM pretraining don't have to babysit a full run just to profile it.</p>
-            </div>
-            <a class="repo" href="https://github.com/Lightning-AI/litgpt/pull/2193" target="_blank" rel="noopener">PR #2193 →</a>
-          </div>
-
-          <div class="oss-item">
-            <span class="badge">merged</span>
-            <div class="body">
-              <b>ZenML</b>
-              <p>Fixed a CLI bug where list commands returned oldest-first results instead of newest — a small thing, but the kind of inconsistency that erodes trust in a tool fast.</p>
-            </div>
-            <a class="repo" href="https://github.com/zenml-io/zenml/pull/4459" target="_blank" rel="noopener">PR #4459 →</a>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- WRITING -->
+    <!-- WRITING (rendered by script.js) -->
     <section id="writing">
       <div class="container">
         <p class="eyebrow">writing</p>
         <h2 class="head">Notes &amp; write ups</h2>
-        <p class="lede">Short technical notes on methods I actually use, mostly written for my own clarity and shared in case they help someone else too.</p>
-        <div class="writing-grid">
-          <a class="article-card" href="articles/loss-functions-segmentation.html">
-            <div class="date">Article</div>
-            <h3>Choosing loss functions for imbalanced segmentation masks</h3>
-            <p>Why plain cross entropy struggles on thin, rare classes like glacier boundaries, and how Dice, Tversky, and boundary losses each fix a different part of the problem.</p>
-          </a>
-          <a class="article-card" href="articles/resunet-vs-segformer.html">
-            <div class="date">Article</div>
-            <h3>ResUNet vs SegFormer, two ways to segment the same image</h3>
-            <p>A practical comparison of a convolutional encoder decoder against a transformer based segmentation head, using results from my own glacier mapping runs.</p>
-          </a>
-          <a class="article-card" href="articles/ensembled-fraud-detection.html">
-            <div class="date">Article</div>
-            <h3>Why fusing weak signals beats one strong model</h3>
-            <p>Notes from building a document fraud pipeline. What a two of four voting scheme gets right that a single end to end classifier does not.</p>
-          </a>
-        </div>
+        <p class="lede">Short technical notes on methods I use, mostly written for my own clarity.</p>
+        <div class="writing-grid" id="writing-grid"></div>
+        <noscript><p class="lede">Enable JavaScript to see the articles.</p></noscript>
       </div>
     </section>
 
@@ -324,8 +327,7 @@
         <div class="skill-groups">
           <div class="skill-group">
             <h3>Computer Vision &amp; Deep Learning</h3>
-            <div class="skill-row">PyTorch</div>
-            <div class="skill-row">TensorFlow</div>
+            <div class="skill-row">PyTorch, TensorFlow</div>
             <div class="skill-row">Hugging Face Transformers</div>
             <div class="skill-row">OpenCV, DINOv2</div>
           </div>
@@ -336,10 +338,10 @@
             <div class="skill-row">Scikit-learn</div>
           </div>
           <div class="skill-group">
-            <h3>MLOps &amp; Infrastructure</h3>
+            <h3>Engineering</h3>
+            <div class="skill-row">Python, C++, SQL</div>
             <div class="skill-row">Docker, GitHub Actions</div>
-            <div class="skill-row">Prometheus, FastAPI</div>
-            <div class="skill-row">AWS EC2, Linux</div>
+            <div class="skill-row">FastAPI, Streamlit, Linux</div>
           </div>
         </div>
       </div>
@@ -351,33 +353,26 @@
         <p class="eyebrow">contact</p>
         <h2 class="head">Let's talk</h2>
         <div class="contact-grid">
-          <p>Open to full time roles and research collaborations in machine learning, computer vision, and document intelligence. Reach out through any of these.</p>
+          <p>Open to full time roles and research collaborations in machine learning, computer vision, and document intelligence.</p>
           <div class="contact-box">
-            <div class="contact-row">
-              <span class="k">email</span>
-              <a class="v" href="mailto:mukesh.dewangan@iitgn.ac.in">mukesh.dewangan@iitgn.ac.in</a>
-            </div>
-            <div class="contact-row">
-              <span class="k">linkedin</span>
-              <a class="v" href="https://www.linkedin.com/in/dewanganmukesh/" target="_blank" rel="noopener">/in/dewanganmukesh</a>
-            </div>
-            <div class="contact-row">
-              <span class="k">github</span>
-              <a class="v" href="https://github.com/MukeshK17" target="_blank" rel="noopener">/MukeshK17</a>
-            </div>
+            <div class="contact-row"><span class="k">email</span><a class="v" href="mailto:mukesh.dewangan@iitgn.ac.in">mukesh.dewangan@iitgn.ac.in</a></div>
+            <div class="contact-row"><span class="k">phone</span><a class="v" href="tel:+919617568990">+91 9617568990</a></div>
+            <div class="contact-row"><span class="k">linkedin</span><a class="v" href="https://www.linkedin.com/in/dewanganmukesh/" target="_blank" rel="noopener">/in/dewanganmukesh</a></div>
+            <div class="contact-row"><span class="k">github</span><a class="v" href="https://github.com/MukeshK17" target="_blank" rel="noopener">/MukeshK17</a></div>
           </div>
         </div>
       </div>
     </section>
 
-    <footer>
-      <div class="container">
-        <span>© 2026 Mukesh Dewangan</span>
-        <span>~/mukeshk17</span>
-      </div>
-    </footer>
   </main>
 
-  <script src="script.js"></script>
+  <footer>
+    <div class="container">
+      <span>© 2026 Mukesh Dewangan</span>
+      <span>~/mukeshk17</span>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
 </body>
 </html>
